@@ -1,24 +1,43 @@
 package main
 
 import (
+	"betrack/models"
 	"net/http"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	// Create a Gin router with default middleware (logger and recovery)
-	r := gin.Default()
+	var bets = []models.Bet{}
 
-	// Define a simple GET endpoint
-	r.GET("/ping", func(c *gin.Context) {
-		// Return JSON response
+	r := gin.Default()
+	r.Use(cors.Default())
+
+	r.GET("/bets", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
+			"date":      "01/01/2025",
+			"bookmaker": "Winamax",
+			"sport":     "football",
+			"type":      "1N2",
+			"bet":       10,
+			"cote":      1.5,
+			"isWin":     true,
+			"money":     15,
 		})
 	})
 
-	// Start server on port 8080 (default)
-	// Server will listen on 0.0.0.0:8080 (localhost:8080 on Windows)
+	r.POST("/bet/new", func(c *gin.Context) {
+		var json models.Bet
+
+		if err := c.ShouldBindBodyWithJSON(&json); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+
+		bets = append(bets, json)
+		c.JSON(http.StatusCreated, bets)
+	})
+
 	r.Run()
 }
