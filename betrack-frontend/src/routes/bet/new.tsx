@@ -1,21 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { createFileRoute } from '@tanstack/react-router'
 import { useForm, type AnyFieldApi } from '@tanstack/react-form'
+import type { Bet } from '../../models/Bet'
 
 export const Route = createFileRoute('/bet/new')({
   component: NewBet,
 })
-
-export interface Bet {
-  date: string
-  bookmaker: string
-  sport: string
-  type: string
-  bet: number
-  cote: number
-  isWin: boolean
-  money: number
-}
 
 function FieldInfo({ field }: { field: AnyFieldApi }) {
   return (

@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BetNewRouteImport } from './routes/bet/new'
+import { Route as BetBetsRouteImport } from './routes/bet/bets'
 
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
@@ -28,34 +29,43 @@ const BetNewRoute = BetNewRouteImport.update({
   path: '/bet/new',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BetBetsRoute = BetBetsRouteImport.update({
+  id: '/bet/bets',
+  path: '/bet/bets',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bet/bets': typeof BetBetsRoute
   '/bet/new': typeof BetNewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bet/bets': typeof BetBetsRoute
   '/bet/new': typeof BetNewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/bet/bets': typeof BetBetsRoute
   '/bet/new': typeof BetNewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/bet/new'
+  fullPaths: '/' | '/about' | '/bet/bets' | '/bet/new'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/bet/new'
-  id: '__root__' | '/' | '/about' | '/bet/new'
+  to: '/' | '/about' | '/bet/bets' | '/bet/new'
+  id: '__root__' | '/' | '/about' | '/bet/bets' | '/bet/new'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  BetBetsRoute: typeof BetBetsRoute
   BetNewRoute: typeof BetNewRoute
 }
 
@@ -82,12 +92,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BetNewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bet/bets': {
+      id: '/bet/bets'
+      path: '/bet/bets'
+      fullPath: '/bet/bets'
+      preLoaderRoute: typeof BetBetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  BetBetsRoute: BetBetsRoute,
   BetNewRoute: BetNewRoute,
 }
 export const routeTree = rootRouteImport
