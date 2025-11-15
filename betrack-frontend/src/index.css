@@ -1,2 +1,31 @@
 @import 'tailwindcss';
 @plugin "daisyui";
+
+@theme {
+  /* Colors */
+  --color-mint-500: oklch(0.72 0.11 178);
+  --color-neon-grey: oklch(0.1822 0 0);
+  --color-neon-dark-blue: oklch(0.3847 0.0935 261.39);
+  --color-neon-purple: oklch(0.5772 0.1525 315.32);
+  --color-neon-pink: oklch(0.7017 0.3225 328.36);
+  --color-neon-cyan: oklch(0.9054 0.15455 194.769);
+  --color-neon-blue: oklch(0.6531 0.1347 242.69);
+  --color-neon-green: oklch(0.7459 0.1812 152.33);
+  --color-neon-yellow: oklch(0.9285 0.1803 102.5);
+
+  /* Shadow */
+  --shadow-neon: 0 0 30px rgba(0, 255, 255, 0.7);
+
+  /* Animations */
+  @keyframes fade-in-scale {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  --animate-fade-in-scale: fade-in-scale 0.3s ease-out;
+}

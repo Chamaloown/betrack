@@ -9,7 +9,7 @@ export default defineConfig({
       target: 'react',
       autoCodeSplitting: true,
     }),
-    react(), 
+    react(),
     tailwindcss(),
   ],
 })

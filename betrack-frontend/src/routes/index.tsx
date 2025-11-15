@@ -9,6 +9,8 @@ export const Route = createFileRoute('/')({
 })
 
 function Index() {
+  // Magic numbers
+
   const [average] = useState(33)
   const [median] = useState(45)
   const [averageGain] = useState(10)
@@ -17,12 +19,12 @@ function Index() {
   return (
     <>
       <div className="w-screen h-screen flex flex-col items-center justify-center">
-        <h1 className="text-8xl m-4">BETRACKER</h1>
+        <h1 className="text-8xl m-4 ">BETRACKER</h1>
         <Link to="/bet/new">
           <button className="btn">Nouveau bet</button>
         </Link>
         <div className="w-full h-2/3 flex flex-row justify-around">
-          <div className="w-2xl h-3/4 justify-center border-2 border-white rounded-lg p-4">
+          <div className="w-2xl h-3/4 justify-center border-2 rounded-lg p-4 border-white">
             <h2 className="mb-8">Performance</h2>
             <div className="flex flex-col space-y-8">
               <div>
@@ -74,7 +76,7 @@ function Index() {
               </div>
             </div>
           </div>
-          <div className="w-2xl h-3/4 justify-center border-2 border-white rounded-lg p-4">
+          <div className="w-2xl h-3/4 justify-center border-2 rounded-lg p-4">
             <h2 className="mb-8">Performance</h2>
             <div className="pb-8 h-full">
               <BarChart
