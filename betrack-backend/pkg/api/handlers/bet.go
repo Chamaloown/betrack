@@ -5,7 +5,6 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/jinzhu/copier"
 )
 
 type BetHandler struct {
@@ -36,10 +35,10 @@ func (cr *BetHandler) FindAll(c *gin.Context) {
 	if err != nil {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
-		response := []Response{}
-		copier.Copy(&response, &bets)
+		// response := []Response{}
+		// copier.Copy(&response, &bets)
 
-		c.JSON(http.StatusOK, response)
+		c.JSON(http.StatusOK, bets)
 	}
 }
 

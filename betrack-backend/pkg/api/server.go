@@ -3,6 +3,7 @@ package http
 import (
 	"betrack/pkg/api/handlers"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,6 +17,8 @@ func NewServerHTTP(betHandler *handlers.BetHandler) *ServerHTTP {
 	engine.Use(gin.Logger())
 
 	api := engine.Group("/api/v1")
+
+	api.Use(cors.Default())
 
 	api.GET("bets", betHandler.FindAll)
 	api.GET("bets/:id", betHandler.FindById)
