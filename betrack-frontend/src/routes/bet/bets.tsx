@@ -22,7 +22,6 @@ function RouteComponent() {
   })
 
   if (error) {
-    console.log(error)
     return 'An error has occurred: ' + error.message
   }
 
