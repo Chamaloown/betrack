@@ -22,6 +22,7 @@ func NewServerHTTP(betHandler *handlers.BetHandler) *ServerHTTP {
 
 	api.GET("bets", betHandler.FindAll)
 	api.GET("bets/:id", betHandler.FindById)
+	api.GET("bets/stat", betHandler.FindStat)
 	api.POST("bets", betHandler.Save)
 	api.DELETE("bets/:id", betHandler.Delete)
 

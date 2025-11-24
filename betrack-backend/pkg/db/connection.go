@@ -2,7 +2,6 @@ package db
 
 import (
 	"betrack/pkg/config"
-	"betrack/pkg/domain"
 	"fmt"
 
 	"gorm.io/driver/postgres"
@@ -19,8 +18,6 @@ func ConnectDatabase(cfg config.Config) (*gorm.DB, error) {
 			SingularTable: false,
 		},
 	})
-
-	db.AutoMigrate(&domain.Bet{})
 
 	return db, err
 }
