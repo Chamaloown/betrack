@@ -2,6 +2,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useForm, type AnyFieldApi } from '@tanstack/react-form'
 import type { Bet } from '../../models/Bet'
+import { newBet as createBet } from '../../mutations/bets/newBet'
+import { useMutation } from '@tanstack/react-query'
 
 export const Route = createFileRoute('/bet/new')({
   component: NewBet,
@@ -30,10 +32,15 @@ function NewBet() {
     money: 10,
   }
 
+  const mutation = useMutation({
+    mutationFn: (newBet: Bet) => createBet(newBet),
+  })
+
   const form = useForm({
     defaultValues: defaultBet,
     onSubmit: async ({ value }) => {
       console.log(value)
+      mutation.mutate({ ...value })
     },
   })
 
