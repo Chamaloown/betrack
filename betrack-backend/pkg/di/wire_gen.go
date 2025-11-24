@@ -7,7 +7,7 @@
 package di
 
 import (
-	http "betrack/pkg/api"
+	"betrack/pkg/api"
 	"betrack/pkg/api/handlers"
 	"betrack/pkg/config"
 	"betrack/pkg/db"

@@ -1,6 +1,9 @@
 package domain
 
+import "gorm.io/gorm"
+
 type Bet struct {
+	gorm.Model
 	Date      string  `json:"date"`
 	Bookmaker string  `json:"bookmaker"`
 	Sport     string  `json:"sport"`

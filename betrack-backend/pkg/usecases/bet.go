@@ -41,12 +41,6 @@ func (c *betUseCase) Delete(ctx context.Context, id uint) error {
 }
 
 func (c *betUseCase) FindStat(ctx context.Context) (domain.Stat, error) {
-	var stat = domain.Stat{
-		AverageBet:  33,
-		Median:      10,
-		AverageGain: 45,
-		TotalGain:   353,
-	}
-
-	return stat, nil
+	stat, err := c.betRepository.FindStat(ctx)
+	return stat, err
 }
